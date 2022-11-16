@@ -104,9 +104,53 @@ public class Room {
         return pos;
     }
 
+    public boolean hasNorthExit(){
+        if (exitNorth == null){
+            return false;
+        }else {
+            return true;
+        }
+
+    }
+
+    public boolean hasSouthExit(){
+        if (exitSouth == null){
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+    public boolean hasEastExit(){
+        if (exitEast == null){
+            return false;
+        }else {
+            return true;
+        }
+    }
 
 
+    public boolean hasWestExit(){
+        if (exitWest == null){
+            return false;
+        }else {
+            return true;
+        }
+    }
 
+    public Room getNorthExit(){
+        return exitNorth;
+    }
+
+    public Room getSouthExit() {
+        return exitSouth;
+    }
+    public Room getEastExit() {
+        return exitEast;
+    }
+    public Room getWestExit() {
+        return exitWest;
+    }
 
 
 

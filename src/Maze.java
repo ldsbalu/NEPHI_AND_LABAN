@@ -1,8 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
-public class Maze extends JPanel {
+public class Maze extends JPanel implements KeyListener {
     private ArrayList<Room> rooms;
     Nephi nephi;
     Laban laban;
@@ -10,6 +12,7 @@ public class Maze extends JPanel {
     Sword sword;
 
     public Maze(){
+        addKeyListener(this);
 
         nephi = new Nephi();
         laban= new Laban();
@@ -85,6 +88,7 @@ public class Maze extends JPanel {
 
 
     public void paintComponent(Graphics g){
+        requestFocusInWindow();
         int w = getWidth();
         int h = getHeight();
         g.setColor(Color.BLACK);
@@ -113,5 +117,51 @@ public class Maze extends JPanel {
         window.setSize(280,300);
         window.setContentPane(new Maze());
         window.setVisible(true);
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        int code = e.getKeyCode();
+        switch( code ) {
+            case KeyEvent.VK_UP:
+                nephi.moveNorth();
+                break;
+            case KeyEvent.VK_DOWN:
+                nephi.moveSouth();
+                break;
+            case KeyEvent.VK_LEFT:
+                nephi.moveWest();
+                break;
+            case KeyEvent.VK_RIGHT :
+                nephi.moveEast();
+                break;
+        }
+        switch( code ) {
+            case KeyEvent.VK_W:
+                laban.moveNorth();
+                break;
+            case KeyEvent.VK_S:
+                laban.moveSouth();
+                break;
+            case KeyEvent.VK_A:
+                laban.moveWest();
+                break;
+            case KeyEvent.VK_D :
+                laban.moveEast();
+                break;
+        }
+
+
+    repaint();
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
     }
 }

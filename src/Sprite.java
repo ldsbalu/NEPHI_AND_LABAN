@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class Sprite {
+abstract class Sprite {
     protected Room currentRoom;
     protected ImageIcon image;
     public Sprite(){
@@ -25,6 +25,28 @@ public class Sprite {
 
         }
 
+    }
+
+    public void moveSouth() {
+       if(currentRoom.hasSouthExit()) {
+           currentRoom=currentRoom.getSouthExit();
+       }
+    }
+
+    public void moveNorth() {
+        if(currentRoom.hasNorthExit()) {
+            currentRoom=currentRoom.getNorthExit();
+        }
+    }
+    public void moveEast(){
+        if(currentRoom.hasEastExit()) {
+            currentRoom=currentRoom.getEastExit();
+        }
+    }
+    public void moveWest(){
+        if(currentRoom.hasWestExit()) {
+            currentRoom=currentRoom.getWestExit();
+        }
     }
 
 }
