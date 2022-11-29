@@ -5,11 +5,14 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 public class Maze extends JPanel implements KeyListener {
+    ArrayList<Drawable>  obj;
     private ArrayList<Room> rooms;
     Nephi nephi;
     Laban laban;
     Plates plates;
     Sword sword;
+    Room r1, r2, r3, r4,r5,r6,r7,r8,r9,r10, r11, r12,r13,r14,r15,r16;
+
 
     public Maze(){
         addKeyListener(this);
@@ -18,25 +21,26 @@ public class Maze extends JPanel implements KeyListener {
         laban= new Laban();
         plates =new Plates();
         sword = new Sword();
+        obj = new ArrayList<>();
 
 
         rooms = new ArrayList<>();
-        Room r1 = new Room(20, 20);
-        Room r2 = new Room(80, 20);
-        Room r3 = new Room(140, 20);
-        Room r4 = new Room(200, 20);
-        Room r5 = new Room(20, 80);
-        Room r6 = new Room(80, 80);
-        Room r7 = new Room(140, 80);
-        Room r8 = new Room(200, 80);
-        Room r9 = new Room(20, 140);
-        Room r10 = new Room(80, 140);
-        Room r11 = new Room(140, 140);
-        Room r12 = new Room(200, 140);
-        Room r13 = new Room(20, 200);
-        Room r14 = new Room(80, 200);
-        Room r15 = new Room(140, 200);
-        Room r16 = new Room(200, 200);
+        r1 = new Room(20, 20);
+        r2 = new Room(80, 20);
+        r3 = new Room(140, 20);
+        r4 = new Room(200, 20);
+        r5 = new Room(20, 80);
+        r6 = new Room(80, 80);
+        r7 = new Room(140, 80);
+        r8 = new Room(200, 80);
+        r9 = new Room(20, 140);
+        r10 = new Room(80, 140);
+        r11 = new Room(140, 140);
+        r12 = new Room(200, 140);
+        r13 = new Room(20, 200);
+        r14 = new Room(80, 200);
+        r15 = new Room(140, 200);
+        r16 = new Room(200, 200);
 
 
         rooms.add(r1);
@@ -56,6 +60,26 @@ public class Maze extends JPanel implements KeyListener {
         rooms.add(r15);
         rooms.add(r16);
 
+        obj.add(r1);
+        obj.add(r2);
+        obj.add(r3);
+        obj.add(r4);
+        obj.add(r5);
+        obj.add(r6);
+        obj.add(r7);
+        obj.add(r8);
+        obj.add(r9);
+        obj.add(r10);
+        obj.add(r11);
+        obj.add(r12);
+        obj.add(r13);
+        obj.add(r14);
+        obj.add(r15);
+        obj.add(r16);
+        obj.add(nephi);
+        obj.add(laban);
+        obj.add(sword);
+        obj.add(plates);
 
 
         r2.setWestExit(r1);
@@ -96,14 +120,20 @@ public class Maze extends JPanel implements KeyListener {
 
         g.setColor(Color.YELLOW);
 
-        for (Room r : rooms) {
-            r.draw(g);
-        }
+//        for (Room r : rooms) {
+//            r.draw(g);
+//        }
+//
+//        nephi.draw(g);
+//        laban.draw(g);
+//        sword.draw(g);
+//        plates.draw(g);
 
-        nephi.draw(g);
-        laban.draw(g);
-        sword.draw(g);
-        plates.draw(g);
+        for (Drawable d: obj) {
+
+            d.draw(g);
+
+        }
 
 
 
@@ -156,6 +186,27 @@ public class Maze extends JPanel implements KeyListener {
                 break;
         }
 
+        if(nephi.getCurrentRoom() == sword.getCurrentRoom() ){
+            nephi.pickUpSword();
+            sword.setCurrentRoom(null) ;
+        }
+        if(nephi.getCurrentRoom() == plates.getCurrentRoom()){
+            JOptionPane.showMessageDialog(null, "Congratulations Nephi! You found the brass plates!. ", "found plates", JOptionPane.INFORMATION_MESSAGE);
+            reset();
+        }
+        if(nephi.getCurrentRoom() == laban.getCurrentRoom()){
+            if(nephi.isArmed()) {
+                laban.setCurrentRoom(null) ;
+            }else{
+
+                JOptionPane.showMessageDialog(null, "Oh no Nephi! Laban got you! Try again", "Game OVER", JOptionPane.INFORMATION_MESSAGE);
+                reset();
+            }
+        }
+
+
+
+
 
     repaint();
     }
@@ -163,5 +214,13 @@ public class Maze extends JPanel implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
 
+    }
+
+    private void reset() {
+        nephi.reset();
+        nephi.setCurrentRoom(r13);
+        laban.setCurrentRoom(r6);
+        sword.setCurrentRoom(r15);
+        plates.setCurrentRoom(r1);
     }
 }

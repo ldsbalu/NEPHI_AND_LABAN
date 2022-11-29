@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-abstract class Sprite {
+abstract class Sprite implements Drawable {
     protected Room currentRoom;
     protected ImageIcon image;
     public Sprite(){

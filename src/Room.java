@@ -1,6 +1,8 @@
 import java.awt.*;
 
-public class Room {
+public class Room implements Drawable {
+
+    public static final int SIZE = 50;
     private Point pos;
     private Room exitEast;
     private Room exitWest;
@@ -21,53 +23,53 @@ public class Room {
     // draws method
     public void draw(Graphics g){
 //       // north
-//        g.drawLine(pos.x, pos.y, pos.x+50, pos.y);
+//        g.drawLine(pos.x, pos.y, pos.x+SIZE, pos.y);
 //        //west
-//        g.drawLine(pos.x, pos.y, pos.x, pos.y+50);
+//        g.drawLine(pos.x, pos.y, pos.x, pos.y+SIZE);
 //        //south
-//        g.drawLine(pos.x, pos.y +50, pos.x+50 , pos.y+50);
+//        g.drawLine(pos.x, pos.y +SIZE, pos.x+SIZE , pos.y+SIZE);
 //        //east
-//        g.drawLine(pos.x+50, pos.y , pos.x+50 , pos.y+50);
+//        g.drawLine(pos.x+SIZE, pos.y , pos.x+SIZE , pos.y+SIZE);
 
-        //g.drawRect(pos.x , pos.y, 50,50);
+        //g.drawRect(pos.x , pos.y, SIZE,SIZE);
 
         //g.drawOval(pos.x+15, pos.y+15,25, 25);
 
 
         if  (exitNorth == null) {
-            g.drawLine(pos.x, pos.y, pos.x+50, pos.y);
+            g.drawLine(pos.x, pos.y, pos.x+SIZE, pos.y);
         } else {
-            g.drawLine(pos.x, pos.y, pos.x+50/2-5, pos.y);
-            g.drawLine(pos.x+50/2+5, pos.y, pos.x+50, pos.y);
-            g.drawLine(pos.x+50/2+5, pos.y, pos.x+50/2+5, pos.y-5);
-            g.drawLine(pos.x+50/2-5, pos.y, pos.x+50/2-5, pos.y-5);
+            g.drawLine(pos.x, pos.y, pos.x+SIZE/2-5, pos.y);
+            g.drawLine(pos.x+SIZE/2+5, pos.y, pos.x+SIZE, pos.y);
+            g.drawLine(pos.x+SIZE/2+5, pos.y, pos.x+SIZE/2+5, pos.y-5);
+            g.drawLine(pos.x+SIZE/2-5, pos.y, pos.x+SIZE/2-5, pos.y-5);
         }
 
         if  (exitSouth == null) {
-            g.drawLine(pos.x, pos.y+50, pos.x+50, pos.y+50);
+            g.drawLine(pos.x, pos.y+SIZE, pos.x+SIZE, pos.y+SIZE);
         } else {
-            g.drawLine(pos.x, pos.y+50, pos.x+50/2-5, pos.y+50);
-            g.drawLine(pos.x+50/2+5, pos.y+50, pos.x+50, pos.y+50);
-            g.drawLine(pos.x+50/2+5, pos.y+50, pos.x+50/2+5, pos.y+50+5);
-            g.drawLine(pos.x+50/2-5, pos.y+50, pos.x+50/2-5, pos.y+50+5);
+            g.drawLine(pos.x, pos.y+SIZE, pos.x+SIZE/2-5, pos.y+SIZE);
+            g.drawLine(pos.x+SIZE/2+5, pos.y+SIZE, pos.x+SIZE, pos.y+SIZE);
+            g.drawLine(pos.x+SIZE/2+5, pos.y+SIZE, pos.x+SIZE/2+5, pos.y+SIZE+5);
+            g.drawLine(pos.x+SIZE/2-5, pos.y+SIZE, pos.x+SIZE/2-5, pos.y+SIZE+5);
         }
 
         if (exitEast == null) {
-            g.drawLine(pos.x+50, pos.y, pos.x+50, pos.y+50);
+            g.drawLine(pos.x+SIZE, pos.y, pos.x+SIZE, pos.y+SIZE);
         } else {
-            g.drawLine(pos.x+50, pos.y, pos.x+50, pos.y+50/2-5);
-            g.drawLine(pos.x+50, pos.y+50/2+5, pos.x+50, pos.y+50);
-            g.drawLine(pos.x+50, pos.y+50/2+5, pos.x+50+5, pos.y+50/2+5);
-            g.drawLine(pos.x+50, pos.y+50/2-5, pos.x+50+5, pos.y+50/2-5);
+            g.drawLine(pos.x+SIZE, pos.y, pos.x+SIZE, pos.y+SIZE/2-5);
+            g.drawLine(pos.x+SIZE, pos.y+SIZE/2+5, pos.x+SIZE, pos.y+SIZE);
+            g.drawLine(pos.x+SIZE, pos.y+SIZE/2+5, pos.x+SIZE+5, pos.y+SIZE/2+5);
+            g.drawLine(pos.x+SIZE, pos.y+SIZE/2-5, pos.x+SIZE+5, pos.y+SIZE/2-5);
         }
 
         if (exitWest == null) {
-            g.drawLine(pos.x, pos.y, pos.x, pos.y+50);
+            g.drawLine(pos.x, pos.y, pos.x, pos.y+SIZE);
         } else {
-            g.drawLine(pos.x, pos.y, pos.x, pos.y+50/2-5);
-            g.drawLine(pos.x, pos.y+50/2+5, pos.x, pos.y+50);
-            g.drawLine(pos.x, pos.y+50/2+5, pos.x-5, pos.y+50/2+5);
-            g.drawLine(pos.x, pos.y+50/2-5, pos.x-5, pos.y+50/2-5);
+            g.drawLine(pos.x, pos.y, pos.x, pos.y+SIZE/2-5);
+            g.drawLine(pos.x, pos.y+SIZE/2+5, pos.x, pos.y+SIZE);
+            g.drawLine(pos.x, pos.y+SIZE/2+5, pos.x-5, pos.y+SIZE/2+5);
+            g.drawLine(pos.x, pos.y+SIZE/2-5, pos.x-5, pos.y+SIZE/2-5);
         }
 
 
